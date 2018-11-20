@@ -13,9 +13,7 @@ puts x
 
 def scream(words)
   words = words + "!!!!"
-  puts "words before: #{words}"
-  return
-  puts "words after: #{words}"
+  puts "#{words}"
 end
 
 scream("Yippeee")
