@@ -31,9 +31,9 @@ puts "Tens        #{num / 10 % 100 % 10}"
 puts "Ones        #{num % 1000 % 100 % 10}"
 
 movies = {
-  :jaws => 1997,
-  :interstellar => 2012,
-  :inception => 2008
+  :jaws            => 1997,
+  :interstellar    => 2012,
+  :inception       => 2008
 }
 
 puts "\nHASH"
