@@ -53,3 +53,5 @@ puts 5 * 4 * 3 * 2 * 1
 puts "\nFLOAT SQUARES"
 puts 4.3 * 4.3
 puts 16.0 ** 2
+
+puts 100 ** 2
