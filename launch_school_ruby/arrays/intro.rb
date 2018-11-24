@@ -33,16 +33,30 @@ squares.delete_at(1)
 puts squares
 
 
+my_pets = ["cat", "dog", "bird", "cat", "snake", "snake", "dog", "bird"]
+my_pets_2 = my_pets
+my_pets_3 = my_pets
+
 # delete by value, deletes all instances of that value
 puts "\n\ndelete:"
-my_pets = ["cat", "dog", "bird", "cat", "snake"]
 my_pets.delete("cat")
 puts my_pets
 
 
 # uniq: iterates through, deletes duplicates, returns new array
 puts "\n\nuniq:"
-my_pets_2 = ["cat", "dog", "bird", "cat", "snake", "snake", "dog"]
 unique_pets =  my_pets_2.uniq
 print "#{my_pets_2}"  # untouched
 print "\n#{unique_pets}"
+
+
+# using the uniq! will make it destructive
+my_pets_3.uniq!
+print print "\n#{my_pets_3}"
+
+
+# select
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+big_nums = numbers.select { |num| num > 4}
+puts big_nums
+puts numbers
