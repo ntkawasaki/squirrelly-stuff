@@ -4,13 +4,11 @@ def take_block(number, &block)
   yield number
 end
 
-
 # This is actually taking the argument do/end as its block
 number = 42
 take_block(number) do |num|
   puts "Block being called in a method! Number is #{num}"
 end
-
 
 ## procs
 talk = proc do |name|
@@ -18,7 +16,6 @@ talk = proc do |name|
 end
 
 talk.call('Bob')
-
 
 # modify take_block
 def take_proc(proc)
