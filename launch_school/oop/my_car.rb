@@ -41,7 +41,7 @@ class MyCar
     mileage = miles / gallons
     mileage
   end
-
+  
   def what_is_self
     self
   end

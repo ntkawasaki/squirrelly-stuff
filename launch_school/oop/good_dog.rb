@@ -1,12 +1,5 @@
 # frozen_string_literal: true
 
-# # Speak
-# module Speak
-#   def speak(sound)
-#     puts sound.to_s
-#   end
-# end
-
 # Doggy
 class GoodDog
   # include Speak
