@@ -26,7 +26,7 @@ class MyCar
     @speed -= speed
     puts "You slowed down by #{@speed} mph."
   end
-
+  
   def shut_down
     @speed = 0
     puts "You came to a stop at #{@speed} mph."
