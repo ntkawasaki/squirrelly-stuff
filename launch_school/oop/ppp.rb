@@ -24,5 +24,21 @@ class GoodDog
   end
 end
 
+# Animal class
+class Animal
+  def a_public_method
+    'Will this work? ' + a_protected_method
+  end
+
+  protected
+
+  def a_protected_method
+    'Yes, Im protected'
+  end
+end
+
 sparky = GoodDog.new('Sparky', 6)
 puts sparky.public_disclosure
+
+bane = Animal.new
+puts bane.a_public_method
