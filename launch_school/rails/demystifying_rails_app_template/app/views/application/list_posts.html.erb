@@ -14,6 +14,9 @@
             <em class="created_at"><%= post['created_at'] %></em>
           </small>
 
+          <%# Link to Edit %>
+          <a href="/edit_post/<%= post['id'] %>">Edit</a>
+
         </div>
         <hr />
       <% end %>

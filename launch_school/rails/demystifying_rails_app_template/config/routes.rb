@@ -5,14 +5,21 @@ Rails.application.routes.draw do
   # first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  # Hello World
   get '/hello_world/' => 'application#hello_world'
   get '/hello/:name' => 'application#hello_world'
 
+  # Show Posts
   get '/list_posts' => 'application#list_posts'
   get '/show_post/:id' => 'application#show_post'
 
+  # Create Posts
   get '/new_post' => 'application#new_post'
   post '/create_post' => 'application#create_post'
+
+  # Edit Posts
+  get '/edit_post/:id' => 'application#edit_post'
+  post '/update_post/:id' => 'application#update_post'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

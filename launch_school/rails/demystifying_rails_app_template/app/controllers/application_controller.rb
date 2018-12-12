@@ -43,6 +43,35 @@ class ApplicationController < ActionController::Base
     redirect_to('/list_posts')
   end
 
+  def edit_post
+    post = connection.execute(
+      'SELECT * FROM posts WHERE posts.id = ?',
+      params['id']
+    ).first
+
+    render('application/edit_post', locals: { post: post })
+  end
+
+  def update_post
+    update_query = <<-SQL
+      UPDATE posts SET
+      title = ?,
+      body = ?,
+      author = ?
+      WHERE posts.id = ?
+    SQL
+
+    connection.execute(
+      update_query,
+      params['title'],
+      params['body'],
+      params['author'],
+      params['id']
+    )
+
+    redirect_to('/list_posts')
+  end
+
   def connection
     db_connection = SQLite3::Database.new 'db/development.sqlite3'
     db_connection.results_as_hash = true
