@@ -164,4 +164,3 @@ john = Student.new('John', 50)
 
 puts bob.better_grade_than?(john)
 puts john.better_grade_than?(bob)
-
