@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
+  # The priority is based upon order of creation.
   # See how all your routes lay out with "rake routes".
 
   # Hello World
@@ -23,6 +22,9 @@ Rails.application.routes.draw do
 
   # Delete Posts
   post '/delete_post/:id' => 'application#delete_post'
+
+  # Create Comment
+  post '/create_comment_for_post/:post_id' => 'application#create_comment'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
