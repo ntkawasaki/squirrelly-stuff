@@ -6,17 +6,22 @@
         <div class="post">
 
           <h2 class="title">
-            <a href="/show_post/<%= post['id'] %>"><%= post['title'] %></a>
+            <a href="/show_post/<%= post.id %>"><%= post.title %></a>
           </h2>
 
           <small class="meta">
-            <span class="author">by <%= post['author'] %> -</span>
-            <em class="created_at"><%= post['created_at'] %></em>
+            <span class="author">by <%= post.author %> -</span>
+            <em class="created_at"><%= post.created_at %></em>
           </small>
 
           <%# Link to Edit %>
-          <a href="/edit_post/<%= post['id'] %>">Edit</a>
+          <a href="/edit_post/<%= post.id %>">Edit</a>
 
+          <%# Delete %>
+          <form method="POST" action="/delete_post/<%= post.id %>" style='display: inline'>
+            <input type="submit" value="Delete" />
+          </form>
+          
         </div>
         <hr />
       <% end %>
