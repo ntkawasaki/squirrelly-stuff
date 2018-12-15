@@ -3,7 +3,7 @@
 
     <div class="post">
 
-      <%# Display Post %>
+      <%# Post %>
       <h2 class="title">
         <%= post.title %>
       </h2>
@@ -17,45 +17,68 @@
     
       <br /><br />
 
-      <%# Display Comments %>
+      <%# Comments %>
       <div class="comments">
         <h3>Comments:</h3>
 
         <hr />
 
+        <%# Show Comments %>
         <% post.comments.each_with_index do |comment, index| %>
           <div class="comment">
+
+            <p class="comment_body"><%= comment.body %></p>
 
             <small class="comment_meta">
               <span class="comment_author"><%= index + 1 %> by <%= comment.author %> -</span>
               <em class="comment_created_at"><%= comment.created_at %></em>
             </small>
 
-            <p class="comment_body"><%= comment.body %></p>
-
           </div>
+
+          <%# Delete Comment %>
+          <form method="POST" action="/list_posts/<%= post.id %>/delete_comment/<%= comment.id %>">
+            <input type="submit" value="Delete Comment" />
+          </form>          
+          <%# End Delete Comment %>
+
         <% end %>
+        <%# End Show Comments %>
+
+        <%# Show Comment Errors %>
+        <div class="errors">
+          <% comment.errors.each do |attribute, error| %>
+            <p class="error" style="color: orange">
+              <%= attribute %>: <%= error %>
+            </p>
+          <% end%>
+        </div>
+        <%# End Show Comment Errors %>
 
         <%# Submit Comment %>
         <form method="POST" action="/create_comment_for_post/<%= post.id %>">
 
           <label for="body">Comment</label>
-          <textarea id="body" name="body"></textarea>
+          <textarea id="body" name="body"><%= comment.body %></textarea>
           <br /> <br />
 
           <label for="author">Name</label>
-          <input id="author" name="author" type="text" />
+          <input id="author" name="author" type="text" value="<%= comment.author %>"/>
           <br /> <br />
 
           <input type="submit" value="Add Comment" />
           
         </form>
+        <%# End Submit Comment %>
 
         <hr />
 
       </div>
+      <%# End Comments %>
+
 
     </div>
+    <%# End Post %>
 
     <br />
 
