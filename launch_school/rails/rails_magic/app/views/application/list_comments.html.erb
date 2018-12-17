@@ -1,0 +1,34 @@
+<html>
+  <body>
+
+    <%# Comments %>
+    <div class="comments">
+
+      <% comments.each do |comment| %>
+
+        <%# Show Comment %>
+        <div class="comment">
+
+          <small class="comment_meta">
+            <span class="comment_post_title">
+              Comment on
+              <strong><%= comment.post.title %></strong>
+            </span>
+
+            <span class="comment_author">by <%= comment.author %> -</span>
+            <em class="comment_created_at"><%= comment.created_at %></em>
+          </small>
+
+          <p class="comment_body"><%= comment.body %></p>
+
+        </div>
+        <%# End Show Comment %>
+
+        <hr />
+      <% end %>
+
+    </div>    
+    <%# End Comments %>
+
+  </body>
+</html>
