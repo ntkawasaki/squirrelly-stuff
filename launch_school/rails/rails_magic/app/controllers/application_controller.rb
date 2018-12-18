@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
       locals: { post: post, comment: comment, comments: comments }
     )
   end
-
+  
   def new_post
     post = Post.new
     render('application/new_post', locals: { post: post })
@@ -54,13 +54,11 @@ class ApplicationController < ActionController::Base
 
   def update_post
     post = Post.find(params['id'])
-    binding.pry
     post.set_attributes(
       'title' => params['title'],
       'body' => params['body'],
       'author' => params['author']
     )
-    binding.pry
     if post.save
       redirect_to('/list_posts')
     else
