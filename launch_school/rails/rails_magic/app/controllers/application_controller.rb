@@ -21,16 +21,10 @@ class ApplicationController < ActionController::Base
       locals: { post: post, comment: comment, comments: comments }
     )
   end
-  
+
   def new_post
     post = Post.new
     render('application/new_post', locals: { post: post })
-  end
-
-  def connection
-    db_connection = SQLite3::Database.new 'db/development.sqlite3'
-    db_connection.results_as_hash = true
-    db_connection
   end
 
   def create_post
@@ -99,7 +93,7 @@ class ApplicationController < ActionController::Base
   def list_comments
     comments = Comment.all
     render(
-      'application/list_comments', 
+      'application/list_comments',
       locals: { comments: comments }
     )
   end

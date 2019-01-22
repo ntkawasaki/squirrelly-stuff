@@ -5,15 +5,15 @@
 
       <%# Post %>
       <h2 class="title">
-        <%= post.title %>
+        <%= @post.title %>
       </h2>
 
       <small class="meta">
-        <span class="author">by <%= post.author %> -</span>
-        <em class="created_at"><%= post.created_at %></em>
+        <span class="author">by <%= @post.author %> -</span>
+        <em class="created_at"><%= @post.created_at %></em>
       </small>
       
-      <p class="body"><%= post.body %></p>
+      <p class="body"><%= @post.body %></p>
     
       <br /><br />
 
@@ -24,7 +24,7 @@
         <hr />
 
         <%# Show Comments %>
-        <% post.comments.each_with_index do |comment, index| %>
+        <% @post.comments.each_with_index do |comment, index| %>
           <div class="comment">
 
             <p class="comment_body"><%= comment.body %></p>
