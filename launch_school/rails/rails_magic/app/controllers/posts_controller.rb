@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 # Posts Controller
-class PostsController < ActionController::Base
+class PostsController < ApplicationController
+  before_action :find_post, only: %i[show edit update destroy]
+
   # list_posts -> list -> index
   def index
     @posts = Post.all
@@ -9,7 +11,6 @@ class PostsController < ActionController::Base
 
   # show_posts -> show
   def show
-    @post = Post.find(params['id'])
     @comment = Comment.new
   end
 
@@ -34,13 +35,11 @@ class PostsController < ActionController::Base
   end
 
   # edit_post -> edit
-  def edit
-    @post = Post.find(params['id'])
+  def edit 
   end
 
   # update_post -> update
   def update
-    @post = Post.find(params['id'])
     @post.set_attributes(
       'title' => params['title'],
       'body' => params['body'],
@@ -54,10 +53,15 @@ class PostsController < ActionController::Base
   end
 
   # delete_post -> delete -> destroy
-  def delete_post
-    post = Post.find(params['id'])
+  def destroy
     post.destroy
 
     redirect_to('posts_path')
+  end
+
+  private
+
+  def find_post
+    @post = Post.find(params['id'])
   end
 end

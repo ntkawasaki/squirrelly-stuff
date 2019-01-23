@@ -37,7 +37,7 @@
           </div>
 
           <%# Delete Comment %>
-          <form method="POST" action="/list_posts/<%= post.id %>/delete_comment/<%= comment.id %>">
+          <form method="POST" action="/list_posts/<%= @post.id %>/delete_comment/<%= comment.id %>">
             <input type="submit" value="Delete Comment" />
           </form>          
           <%# End Delete Comment %>

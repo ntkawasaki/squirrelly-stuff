@@ -1,15 +1,17 @@
 # frozen_string_literal: true
 
 # Comments Controller
-class CommentsController < ActionController::Base
+class CommentsController < ApplicationController
+  before_action :find_post, only: %i[create destroy]
+
   # list_comments -> list -> index
   def index
+    binding.pry
     @comments = Comment.all
   end
 
   # create_comment -> create
   def create
-    @post = Post.find(params['post_id'])
     @comment = @post.build_comment(
       'body' => params['body'],
       'author' => params['author']
@@ -24,9 +26,14 @@ class CommentsController < ActionController::Base
 
   # delete_comment -> delete -> destroy
   def destroy
-    post = Post.find(params['post_id'])
-    post.delete_comment(params['comment_id'])
+    @post.delete_comment(params['comment_id'])
 
-    redirect_to(post_path(post.id))
+    redirect_to(post_path(@post.id))
+  end
+
+  private
+
+  def find_post
+    @post = Post.find(params['id'])
   end
 end

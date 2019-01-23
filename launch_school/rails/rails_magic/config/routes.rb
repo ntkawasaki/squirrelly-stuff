@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   # This will generate the above:
   resources :posts do
+    # Generate nested resources
     resources :comments, only: %i[create destroy]
   end
 
