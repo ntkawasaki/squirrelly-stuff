@@ -54,7 +54,7 @@ class PostsController < ApplicationController
 
   # delete_post -> delete -> destroy
   def destroy
-    post.destroy
+    @post.destroy
 
     redirect_to('posts_path')
   end
@@ -62,6 +62,6 @@ class PostsController < ApplicationController
   private
 
   def find_post
-    @post = Post.find(params['id'])
+    @post = Post.find(params[:id])
   end
 end

@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
 
   # list_comments -> list -> index
   def index
-    binding.pry
     @comments = Comment.all
   end
 
@@ -34,6 +33,6 @@ class CommentsController < ApplicationController
   private
 
   def find_post
-    @post = Post.find(params['id'])
+    @post = Post.find(params[:id])
   end
 end

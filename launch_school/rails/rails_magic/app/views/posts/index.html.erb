@@ -6,21 +6,22 @@
         <div class="post">
 
           <h2 class="title">
-            <a href="/posts/<%= post.id %>"><%= post.title %></a>
+            <%= link_to post.title, post_path(post.id) %>
           </h2>
 
           <small class="meta">
             <span class="author">by <%= post.author %> -</span>
             <em class="created_at"><%= post.created_at %></em>
+
+            <%# Link to Edit %>
+            <%= link_to 'Edit', edit_post_path(post.id) %>
+
+            <%# Delete %>
+            <form method="POST" action="/posts/<%= post.id %>" style='display: inline'>
+              <input name="_method" type="hidden" value="delete" />
+              <input type="submit" value="Delete" />
+            </form>
           </small>
-
-          <%# Link to Edit %>
-          <a href="/edit_post/<%= post.id %>">Edit</a>
-
-          <%# Delete %>
-          <form method="POST" action="/delete_post/<%= post.id %>" style='display: inline'>
-            <input type="submit" value="Delete" />
-          </form>
           
         </div>
         <hr />
@@ -29,6 +30,7 @@
     </div>
 
     <!-- link to new post -->
-    <a href="/new_post">New Post</a>
+    <%= link_to 'New Post', new_post_path %>
+
   </body>
 </html>
