@@ -21,11 +21,7 @@ class PostsController < ApplicationController
 
   # create_post -> create
   def create
-    @post = Post.new(
-      'title' => params['title'],
-      'body' => params['body'],
-      'author' => params['author']
-    )
+    @post = Post.new(params[:post])
 
     if @post.save
       redirect_to(posts_path)
@@ -56,7 +52,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
 
-    redirect_to('posts_path')
+    redirect_to(posts_path)
   end
 
   private

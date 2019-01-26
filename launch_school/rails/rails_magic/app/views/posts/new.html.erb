@@ -9,27 +9,28 @@
       <% end %>
     </div>
 
-    <form action="/create_post" method="POST">
+    <%= form_tag url_for(action: 'create'), method: "POST" do %>
 
-      <label for="title"> Title</label>
-      <input id="title" name="title" type="text" value="<%= @post.title %>"/>
-      <br /> <br />
+      <%= label_tag 'Title' %>
+      <%= text_field_tag 'post[title]', @post.title %>
+      <br/><br/>
 
-      <label for="body"> Body</label>
-      <textarea id="body" name="body" type="text"><%= @post.body %></textarea>
-      <br /> <br />
+      <%= label_tag 'Body' %>
+      <%= text_area_tag 'post[body]', @post.body %>
+      <br/><br/>
 
-      <label for="author"> Author</label>
-      <input id="author" name="author" type="text" value="<%= @post.author %>"/>
-      <br /> <br />
+      <%= label_tag 'Author' %>
+      <%= text_field_tag 'post[author]', @post.author %>
+      <br/><br/>
 
-      <input type="submit" value="Create Post">
-      
-    </form>
+      <%= submit_tag "Create Post" %>
+
+    <% end %>
 
     <br />
+    
     <!-- link back to the list of post -->
-    <a href="/list_posts">Back to Posts</a>
+    <a href="/posts">Back to Posts</a>
 
   </body>
 </html>
