@@ -31,16 +31,13 @@ class PostsController < ApplicationController
   end
 
   # edit_post -> edit
-  def edit 
+  def edit
   end
 
   # update_post -> update
   def update
-    @post.set_attributes(
-      'title' => params['title'],
-      'body' => params['body'],
-      'author' => params['author']
-    )
+    @post.set_attributes(params[:post])
+
     if @post.save
       redirect_to(posts_path)
     else

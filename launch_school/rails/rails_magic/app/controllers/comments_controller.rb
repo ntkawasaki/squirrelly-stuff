@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
 
   # delete_comment -> delete -> destroy
   def destroy
-    @post.delete_comment(params['comment_id'])
+    @post.delete_comment(params[:id])
 
     redirect_to(post_path(@post.id))
   end
@@ -30,6 +30,6 @@ class CommentsController < ApplicationController
   private
 
   def find_post
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:post_id])
   end
 end

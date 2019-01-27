@@ -56,17 +56,21 @@
         <%# End Show Comment Errors %>
 
         <%# Submit Comment %>
-        <%= form_tag post_comments_path(@post.id) do %>
+        <%= my_form_tag post_comments_path(@post.id) do %>
 
-          <%= label_tag 'Comment' %>
-          <%= text_area_tag 'comment[body]', @comment.body %>
+          <% unless @comment.new_record? %>
+            <%= my_hidden_field_tag '_method', 'PATCH' %>
+          <% end %>
+
+          <%= my_label_tag 'Comment' %>
+          <%= my_text_area_tag 'comment[body]', @comment.body %>
           <br /> <br />
 
-          <%= label_tag 'Name' %>
-          <%= text_field_tag 'comment[author]', @comment.author %>
+          <%= my_label_tag 'Author' %>
+          <%= my_text_field_tag 'comment[author]', @comment.author %>
           <br /> <br />
 
-          <%= submit_tag "Add Comment" %>
+          <%= my_submit_tag %>
 
         <% end %>
         <%# End Submit Comment %>
