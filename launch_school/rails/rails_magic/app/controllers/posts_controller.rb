@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
   # create_post -> create
   def create
-    @post = Post.new(params[:post])
+    @post = Post.new(post_params)
 
     if @post.save
       redirect_to(posts_path)
@@ -36,9 +36,7 @@ class PostsController < ApplicationController
 
   # update_post -> update
   def update
-    @post.set_attributes(params[:post])
-
-    if @post.save
+    if @post.update_attributes(post_params)
       redirect_to(posts_path)
     else
       render('edit')
@@ -48,7 +46,6 @@ class PostsController < ApplicationController
   # delete_post -> delete -> destroy
   def destroy
     @post.destroy
-
     redirect_to(posts_path)
   end
 
@@ -56,5 +53,9 @@ class PostsController < ApplicationController
 
   def find_post
     @post = Post.find(params[:id])
+  end
+
+  def post_params
+    params.require(:post).permit(:title, :body, :author)
   end
 end
