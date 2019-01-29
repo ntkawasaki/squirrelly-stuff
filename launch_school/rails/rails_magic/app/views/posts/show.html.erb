@@ -37,9 +37,9 @@
           </div>
 
           <%# Delete Comment %>
-          <%= form_tag post_comment_path(@post.id, comment.id), method: "DELETE" do %>
+          <%= form_for [@post, comment], method: "DELETE" do %>
             <%= submit_tag "Delete Comment" %>
-          <% end %>        
+          <% end %>
           <%# End Delete Comment %>
 
         <% end %>
@@ -56,21 +56,17 @@
         <%# End Show Comment Errors %>
 
         <%# Submit Comment %>
-        <%= my_form_tag post_comments_path(@post.id) do %>
+        <%= my_form_for [@post, @comment] do |f| %>
 
-          <% unless @comment.new_record? %>
-            <%= my_hidden_field_tag '_method', 'PATCH' %>
-          <% end %>
+          <%= f.my_label 'Comment' %>
+          <%= f.my_text_area :body %>
+          <br /><br />
 
-          <%= my_label_tag 'Comment' %>
-          <%= my_text_area_tag 'comment[body]', @comment.body %>
-          <br /> <br />
+          <%= f.my_label 'Your Name' %>
+          <%= f.my_text_field :author %>
+          <br /><br />
 
-          <%= my_label_tag 'Author' %>
-          <%= my_text_field_tag 'comment[author]', @comment.author %>
-          <br /> <br />
-
-          <%= my_submit_tag %>
+          <%= f.my_submit %>
 
         <% end %>
         <%# End Submit Comment %>

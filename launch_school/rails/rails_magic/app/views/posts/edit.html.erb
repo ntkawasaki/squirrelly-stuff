@@ -3,9 +3,7 @@
 
     <%= render "shared/errors", obj: @post %>
 
-    <%= form_tag url_for(action: 'update'), method: "PATCH" do %>
-      <%= render "form_fields" %>
-    <% end %>
+    <%= render "form" %>
 
     <br />
 
