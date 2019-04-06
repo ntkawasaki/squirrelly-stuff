@@ -1,0 +1,89 @@
+<html>
+  <body>
+
+    <div class="post">
+
+      <%# Post %>
+      <h2 class="title">
+        <%= @post.title %>
+      </h2>
+
+      <small class="meta">
+        <span class="author">by <%= @post.author %> -</span>
+        <em class="created_at"><%= @post.created_at %></em>
+      </small>
+      
+      <p class="body"><%= @post.body %></p>
+    
+      <br /><br />
+
+      <%# Comments %>
+      <div class="comments">
+        <h3>Comments:</h3>
+
+        <hr />
+
+        <%# Show Comments %>
+        <% @post.comments.each_with_index do |comment, index| %>
+          <div class="comment">
+
+            <p class="comment_body"><%= comment.body %></p>
+
+            <small class="comment_meta">
+              <span class="comment_author"><%= index + 1 %> by <%= comment.author %> -</span>
+              <em class="comment_created_at"><%= comment.created_at %></em>
+            </small>
+
+          </div>
+
+          <%# Delete Comment %>
+          <%= form_for [@post, comment], method: "DELETE" do %>
+            <%= submit_tag "Delete Comment" %>
+          <% end %>
+          <%# End Delete Comment %>
+
+        <% end %>
+        <%# End Show Comments %>
+
+        <%# Show Comment Errors %>
+        <div class="errors">
+          <% @comment.errors.each do |attribute, error| %>
+            <p class="error" style="color: orange">
+              <%= attribute %>: <%= error %>
+            </p>
+          <% end%>
+        </div>
+        <%# End Show Comment Errors %>
+
+        <%# Submit Comment %>
+        <%= my_form_for [@post, @comment] do |f| %>
+
+          <%= f.my_label 'Comment' %>
+          <%= f.my_text_area :body %>
+          <br /><br />
+
+          <%= f.my_label 'Your Name' %>
+          <%= f.my_text_field :author %>
+          <br /><br />
+
+          <%= f.my_submit %>
+
+        <% end %>
+        <%# End Submit Comment %>
+
+        <hr />
+
+      </div>
+      <%# End Comments %>
+
+
+    </div>
+    <%# End Post %>
+
+    <br />
+
+    <%# Link to list_posts %>
+    <%= my_link_to 'Back to Posts', posts_path %>
+
+  </body>
+</html>
