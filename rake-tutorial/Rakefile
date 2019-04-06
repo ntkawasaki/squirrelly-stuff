@@ -1,0 +1,14 @@
+# Sickness
+require 'rake'
+
+task default: :html
+task html: %w[ch1.md ch2.md ch3.md syllabus.md]
+
+%w[ch1.md ch2.md ch3.md syllabus.md].each do |md_file|
+  html_file = File.basename(md_file, '.md') + '.html'
+
+  file html_file => md_file do
+    puts sh.ancestors
+    system("pandoc -o #{html_file} #{md_file}")
+  end
+end
